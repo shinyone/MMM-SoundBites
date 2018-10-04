@@ -19,8 +19,6 @@ Module.register("MMM-SoundBites", {
 	requiresVersion: "2.1.0", // Required version of MagicMirror
 
 	start: function() {
-		let self = this;
-
 		this.songs = [];
 		this.playIndex = 0;
 		this.loaded = false;
@@ -112,7 +110,10 @@ Module.register("MMM-SoundBites", {
 				this.stop();
 			}
 			else if (payload === false && !this.suspended && this.stopped) {
-				this.play();
+				var self = this;
+				setTimeout(function() {
+					self.play();
+				}, 2000);
 			}
 
 		}
@@ -130,7 +131,7 @@ Module.register("MMM-SoundBites", {
 		this.playAnother();
 		// set the timer schedule
 		let delay = this.config.playDelay * 1000; // in microseconds
-
+		var self = this;
 		this.interval = setInterval(function () {
 			self.playAnother();
 		}, delay);

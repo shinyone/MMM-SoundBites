@@ -26,7 +26,7 @@ module.exports = NodeHelper.create({
 
 			fs.readdir("modules/MMM-SoundBites/music", (err, data) => {
 				for(i = 0; i < data.length; i++){
-					if(path.extname(data[i]) === ".mp3"){
+					if(path.extname(data[i]) === ".mp3" || path.extname(data[i]) === ".wav"){
 						files.push(data[i]);
 					}
 				}
